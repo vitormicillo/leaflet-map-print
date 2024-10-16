@@ -6,59 +6,17 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-		<link href='https://fonts.googleapis.com/css?family=Lato:900,300' rel='stylesheet' type='text/css'>
-		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
 		<style>
-			html {
-				background: #222222;
-				padding: 40px 200px;
-				font-family: 'Lato', sans-serif;
-			}
-
-			.gitButton {
-				padding: 15px 30px;
-				background-color: #47a230;
-				text-decoration: none;
-				font-weight: 900;
-				color: white;
-				text-transform: uppercase;
-				transition: background-color .5s;
-				border: none;
-				border-radius: 2px;
-				cursor: pointer;
-			}
-
-			.gitButton:hover {
-				background-color: #1d7806
-			}
-
-			.gitButton:visited {
-				color: white;
-			}
-
-			.manualButton {
-				padding: 15px 30px;
-				background-color: #308ba2;
-				margin-left: 40px;
-				text-decoration: none;
-				font-weight: 900;
-				color: white;
-				text-transform: uppercase;
-				transition: background-color .5s;
-				border: none;
-				border-radius: 2px;
-				cursor: pointer;
-			}
+			html {background: #222222;}
 		</style>
-
 
 	</head>
 
 	<body class="mapPrint">
 
 		<div id="map" style="height:400px; width:900px"></div>
-		<button class="manualButton" onclick="manualPrint()">Print Map</button>
+		<button onclick="manualPrint()">Print Map</button>
 
 		<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 		<script src="dist/bundle.js"></script>
@@ -98,7 +56,7 @@
 			}).addTo(map);
 
 			function manualPrint() {
-				printer.printMap('CurrentSize', 'MyManualPrint')
+				printer.printMap('CurrentSize', 'customPrintImage')
 			}
 
 		</script>
