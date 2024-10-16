@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Leaflet Map Print Plugin Demo</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+		<link href='https://fonts.googleapis.com/css?family=Lato:900,300' rel='stylesheet' type='text/css'>
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+		<style>
+			html {
+				background: #222222;
+				padding: 40px 200px;
+				font-family: 'Lato', sans-serif;
+			}
+
+			.gitButton {
+				padding: 15px 30px;
+				background-color: #47a230;
+				text-decoration: none;
+				font-weight: 900;
+				color: white;
+				text-transform: uppercase;
+				transition: background-color .5s;
+				border: none;
+				border-radius: 2px;
+				cursor: pointer;
+			}
+
+			.gitButton:hover {
+				background-color: #1d7806
+			}
+
+			.gitButton:visited {
+				color: white;
+			}
+
+			.manualButton {
+				padding: 15px 30px;
+				background-color: #308ba2;
+				margin-left: 40px;
+				text-decoration: none;
+				font-weight: 900;
+				color: white;
+				text-transform: uppercase;
+				transition: background-color .5s;
+				border: none;
+				border-radius: 2px;
+				cursor: pointer;
+			}
+		</style>
+
+
+	</head>
+
+	<body class="mapPrint">
+
+		<div id="map" style="height:400px; width:900px"></div>
+		<button class="manualButton" onclick="manualPrint()">Print Map</button>
+
+		<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+		<script src="dist/bundle.js"></script>
+
+		<script>
+			const map = L.map('map').setView([51.4999, -0.0748], 13);
+
+			const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+				maxZoom: 19,
+				attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
+			}).addTo(map);
+
+			L.marker([51.4999, -0.0748]).addTo(map)
+				.bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
+
+			L.circle([51.4912, -0.0980], 500, {
+				color: 'red',
+				fillColor: '#f03',
+				fillOpacity: 0.6
+			}).addTo(map).bindPopup("I am a circle.");
+
+			L.polygon([
+				[51.5081, -0.0667],
+				[51.5086, -0.0480],
+				[51.4966, -0.0479],
+				[51.4966, -0.0648]
+			]).addTo(map).bindPopup("I am a polygon.");
+
+			const popup = L.popup();
+
+			const printer = L.mapPrint({
+				tileLayer: tiles,
+				sizeModes: ['Current', 'A4Landscape', 'A4Portrait'],
+				filename: 'myMap',
+				exportOnly: true,
+				hideControlContainer: true
+			}).addTo(map);
+
+			function manualPrint() {
+				printer.printMap('CurrentSize', 'MyManualPrint')
+			}
+
+		</script>
+	</body>
+
+</html>

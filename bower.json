@@ -1,0 +1,24 @@
+{
+  "name": "leaflet-map-print",
+  "description": "A leaflet plugin which adds an icon to print the map",
+  "main": "dist/bundle.js",
+  "repository": {
+    "type": "git",
+    "url": "githttps://github.com/vitormicillo/leaflet-map-print.git"
+  },
+  "keywords": [
+    "leaflet"
+  ],
+  "ignore": [
+    ".*",
+    "CHANGELOG.json",
+    "src"
+  ],
+  "author": "Vitor Micillo (Doode) <doode@doode.com.br>",
+  "license": "MIT",
+  "homepage": "https://github.com/viormicillo/leaflet-map-print#readme",
+  "dependencies": {
+    "dom-to-image": "^2.5.2",
+    "file-saver": "^1.3.3"
+  }
+}

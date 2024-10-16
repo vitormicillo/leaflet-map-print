@@ -1,0 +1,20 @@
+{
+  "extends": "mourner",
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "rules": {
+    "globals": {
+      "L": false
+    }
+  },
+  "overrides": [
+    {
+      "files": ["*.js"],
+      "rules": {
+        "strict": ["error", "never"],
+        "indent": ["error", "tab"]
+      }
+    }
+  ]
+}
